@@ -1,27 +1,26 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, Platform} from 'react-native';
 import {OTSession, OTPublisher, OTSubscriber} from 'opentok-react-native';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.apiKey = '';
-    this.sessionId =
-      '';
-    this.token =
-      '';
+    this.sessionId = '';
+    this.token = '';
 
     this.sessionEventHandlers = {
       sessionConnected: event => {
         console.log('connected!', event);
       },
     };
+
     this.publisherEventHandlers = {
       streamCreated: event => {
         console.log('publisher streamCreated:', event);
         setTimeout(
           function () {
-            // this.publisher.getRtcStatsReport();
+            this.publisher.getRtcStatsReport();
           }.bind(this),
           5000,
         );
@@ -37,7 +36,6 @@ class App extends Component {
           'publisher rtcStatsReport 0 jsonArrayOfReports 0:',
           JSON.parse(event[0].jsonArrayOfReports)[0],
         );
-        // console.log('publisher rtcStatsReport', event);
       }
     };
     this.subscriberEventHandlers = {
@@ -47,13 +45,10 @@ class App extends Component {
         console.log('subscriber connected:', streamId);
         setTimeout(
           function () {
-            console.log('this.subscriber.subscribeToAudio:', this.subscriber.subscribeToAudio);
-            console.log('this.subscriber.subscribeToVideo:', this.subscriber.subscribeToVideo);
-            this.subscriber.subscribeToAudio =
-              !this.subscriber.subscribeToAudio;
-            this.subscriber.subscribeToVideo =
-              !this.subscriber.subscribeToVideo;
-            this.subscriber.getRtcStatsReport(event.streamId);
+            // This is broken in Android
+            if (Platform.OS === 'ios') {
+              this.subscriber.getRtcStatsReport(event.streamId);
+            }
           }.bind(this),
           5000,
         );
@@ -69,7 +64,7 @@ class App extends Component {
           JSON.parse(event.jsonArrayOfReports)[0],
         );
         // console.log('subscriber rtcStatsReport', event);
-      }
+      },
     };
   }
   render() {
