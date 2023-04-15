@@ -11,7 +11,16 @@ class App extends Component {
 
     this.sessionEventHandlers = {
       sessionConnected: event => {
-        console.log('connected!', event);
+        console.log('session connected:', event);
+        let cap = this.session.getCapabilities();
+        console.log('session capabilities at sessionConnected', cap);
+        setTimeout(
+          function () {
+            cap = this.session.getCapabilities();
+            console.log('session capabilities after 1 sec', cap);
+          }.bind(this),
+          1000,
+        );
       },
     };
 
