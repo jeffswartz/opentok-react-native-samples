@@ -9,14 +9,16 @@ class App extends Component {
     this.sessionId = '';
     this.token = '';
 
+    this.eventsAlreadyRecieved = {};
     this.sessionEventHandlers = {
-      sessionConnected: event => {
+      sessionConnected: async event => {
         console.log('session connected:', event);
-        let cap = this.session.getCapabilities();
-        console.log('session capabilities at sessionConnected', cap);
+        let issueId = await this.session.reportIssue();
+        console.log('reportIssue ID', issueId);
+        this.session.reportIssue();
         setTimeout(
           function () {
-            cap = this.session.getCapabilities();
+            const cap = this.session.getCapabilities();
             console.log('session capabilities after 1 sec', cap);
           }.bind(this),
           1000,
@@ -45,7 +47,21 @@ class App extends Component {
           'publisher rtcStatsReport 0 jsonArrayOfReports 0:',
           JSON.parse(event[0].jsonArrayOfReports)[0],
         );
-      }
+      },
+      audioNetworkStats: event => {
+        if (this.eventsAlreadyRecieved.publisherAudioNetworkStats) {
+          return;
+        };
+        console.log('publisher audioNetworkStats', event);
+        this.eventsAlreadyRecieved.publisherAudioNetworkStats = true;
+      },
+      videoNetworkStats: event => {
+        if (this.eventsAlreadyRecieved.publisherVideoNetworkStats) {
+          return;
+        };
+        console.log('publisher videoNetworkStats', event);
+        this.eventsAlreadyRecieved.publisherVideoNetworkStats = true;
+      },
     };
     this.subscriberEventHandlers = {
       connected: event => {
@@ -74,6 +90,20 @@ class App extends Component {
         );
         // console.log('subscriber rtcStatsReport', event);
       },
+      audioNetworkStats: event => {
+        if (this.eventsAlreadyRecieved.subscriberAudioNetworkStats) {
+          return;
+        }
+        console.log('subscriber audioNetworkStats', event);
+        this.eventsAlreadyRecieved.subscriberAudioNetworkStats = true;
+      },
+      videoNetworkStats: event => {
+        if (this.eventsAlreadyRecieved.subscriberVideoNetworkStats) {
+          return;
+        }
+        console.log('subscriber videoNetworkStats', event);
+        this.eventsAlreadyRecieved.subscriberVideoNetworkStats = true;
+      },
     };
   }
   render() {
@@ -98,6 +128,10 @@ class App extends Component {
             eventHandlers={this.publisherEventHandlers}
             ref={instance => {
               this.publisher = instance;
+            }}
+            properties={{
+              scalableScreenshare: true,
+              publishAudio: false,
             }}
           />
           <OTSubscriber style={{width: 200, height: 200}}
