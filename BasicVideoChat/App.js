@@ -13,13 +13,14 @@ class App extends Component {
     this.sessionEventHandlers = {
       sessionConnected: async event => {
         console.log('session connected:', event);
-        let issueId = await this.session.reportIssue();
-        console.log('reportIssue ID', issueId);
-        this.session.reportIssue();
+        // let issueId = await this.session.reportIssue();
+        // console.log('reportIssue ID', issueId);
         setTimeout(
-          function () {
+          async function () {
             const cap = this.session.getCapabilities();
             console.log('session capabilities after 1 sec', cap);
+            let issueId = await this.session.reportIssue();
+            console.log('reportIssue ID', issueId);
           }.bind(this),
           1000,
         );
@@ -63,6 +64,11 @@ class App extends Component {
         this.eventsAlreadyRecieved.publisherVideoNetworkStats = true;
       },
     };
+    this.subscriberProperties = {
+      subscribeToVideo: false,
+      // subscribeToAudio: false,
+      audioVolume: 0,
+    };
     this.subscriberEventHandlers = {
       connected: event => {
         // Bug in OT RN SDK -- different implementation in iOS and Android
@@ -75,7 +81,7 @@ class App extends Component {
               this.subscriber.getRtcStatsReport(event.streamId);
             }
           }.bind(this),
-          5000,
+          3000,
         );
       },
       rtcStatsReport: event => {
@@ -132,6 +138,7 @@ class App extends Component {
             properties={{
               scalableScreenshare: true,
               publishAudio: false,
+              resolution: 'HIGH_1080P',
             }}
           />
           <OTSubscriber style={{width: 200, height: 200}}
@@ -139,7 +146,7 @@ class App extends Component {
             ref={instance => {
               this.subscriber = instance;
             }}
-            subscribeToVideo={false}
+            properties={this.subscriberProperties}
           />
         </OTSession>
       </View>
