@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Platform} from 'react-native';
-import {OTSession, OTPublisher, OTSubscriber} from 'opentok-react-native';
+import {OTSession, OTPublisher, OTSubscriber, OT} from 'opentok-react-native';
 
 class App extends Component {
   constructor(props) {
@@ -13,12 +13,17 @@ class App extends Component {
     this.sessionEventHandlers = {
       sessionConnected: async event => {
         console.log('session connected:', event);
-        // let issueId = await this.session.reportIssue();
-        // console.log('reportIssue ID', issueId);
+        let issueId = await this.session.reportIssue();
+        console.log('reportIssue ID', issueId);
+        let capabilities = await this.session.getCapabilities();
+        console.log('session capabilities 0', capabilities);
+        const supportedCodecs = await OT.getSupportedCodecs();
+        console.log('Supported codecs', supportedCodecs);
+
         setTimeout(
           async function () {
-            const cap = this.session.getCapabilities();
-            console.log('session capabilities after 1 sec', cap);
+            capabilities = await this.session.getCapabilities();
+            console.log('session capabilities after 1 sec', capabilities);
             let issueId = await this.session.reportIssue();
             console.log('reportIssue ID', issueId);
           }.bind(this),
@@ -76,18 +81,14 @@ class App extends Component {
         console.log('subscriber connected:', streamId);
         setTimeout(
           function () {
-            // This is broken in Android
-            if (Platform.OS === 'ios') {
-              this.subscriber.getRtcStatsReport(event.streamId);
-            }
+            this.subscriber.getRtcStatsReport(streamId);
           }.bind(this),
           3000,
         );
       },
       rtcStatsReport: event => {
-        console.log('subscriber rtcStatsReport.type', event.type);
         console.log(
-          'subscriber jsonArrayOfReports.type',
+          'subscriber jsonArrayOfReports type',
           typeof event.jsonArrayOfReports
         );
         console.log(
