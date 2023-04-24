@@ -24,11 +24,38 @@ class App extends Component {
           async function () {
             capabilities = await this.session.getCapabilities();
             console.log('session capabilities after 1 sec', capabilities);
-            let issueId = await this.session.reportIssue();
+            issueId = await this.session.reportIssue();
             console.log('reportIssue ID', issueId);
+            try {
+              const forceMuteAllResult = await this.session.forceMuteAll();
+              console.log(
+                'session.forceMuteAll succeeded.',
+                forceMuteAllResult,
+              );
+            } catch (error) {
+              console.log('session.forceMuteAll error:', error);
+            }
           }.bind(this),
           1000,
         );
+        setTimeout(
+          async function () {
+            try {
+              const disableForceMuteResult =
+                await this.session.disableForceMute();
+              console.log(
+                'session.disableForceMute succeeded.',
+                disableForceMuteResult,
+              );
+            } catch (error) {
+              console.log('session.disableForceMute error:', error);
+            }
+          }.bind(this),
+          5000,
+        );
+      },
+      muteForced: async event => {
+        console.log('Session muteForced event', event);
       },
     };
 
@@ -68,11 +95,14 @@ class App extends Component {
         console.log('publisher videoNetworkStats', event);
         this.eventsAlreadyRecieved.publisherVideoNetworkStats = true;
       },
+      muteForced: async event => {
+        console.log('Publiser muteForced event', event);
+      }
     };
     this.subscriberProperties = {
       subscribeToVideo: false,
       // subscribeToAudio: false,
-      audioVolume: 0,
+      audioVolume: 100,
     };
     this.subscriberEventHandlers = {
       connected: event => {
@@ -80,8 +110,14 @@ class App extends Component {
         const streamId = event.streamId || event.stream.streamId;
         console.log('subscriber connected:', streamId);
         setTimeout(
-          function () {
+          async function () {
             this.subscriber.getRtcStatsReport(streamId);
+            try {
+              const forceMuteStreamResult = await this.session.forceMuteStream(streamId);
+              console.log('session.forceMuteStream() succeeded.', forceMuteStreamResult);
+            } catch (error) {
+              console.log('session.forceMuteStream() error:', error);
+            }
           }.bind(this),
           3000,
         );
@@ -89,7 +125,7 @@ class App extends Component {
       rtcStatsReport: event => {
         console.log(
           'subscriber jsonArrayOfReports type',
-          typeof event.jsonArrayOfReports
+          typeof event.jsonArrayOfReports,
         );
         console.log(
           'subscriber rtcStatsReport 0 jsonArrayOfReports 0:',
@@ -138,7 +174,7 @@ class App extends Component {
             }}
             properties={{
               scalableScreenshare: true,
-              publishAudio: false,
+              // publishAudio: false,
               resolution: 'HIGH_1080P',
             }}
           />
