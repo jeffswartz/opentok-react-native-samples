@@ -10,7 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "opentok-react-native": "^0.21.2",
+    "opentok-react-native": "opentok/opentok-react-native#v0.21.5",
     "react": "18.1.0",
     "react-native": "0.70.3"
   },
