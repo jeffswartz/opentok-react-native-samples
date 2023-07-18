@@ -18,9 +18,9 @@ const styles = StyleSheet.create({
 class App extends Component {
   constructor(props) {
     super(props);
-    this.apiKey = '';
-    this.sessionId = '';
-    this.token = '';
+    this.apiKey = '47640471';
+    this.sessionId = '1_MX40NzY0MDQ3MX5-MTY4MDExMDU2MDcxOH55Z1lhYWlNM0M0Y1NpNlZoRW1WNzFHRyt-fn4';
+    this.token = 'T1==cGFydG5lcl9pZD00NzY0MDQ3MSZzaWc9Nzk2ODA4MzNjM2I0NDRiNjRlZDQwMmQxMWZlMDFjOTg2NTRiMjgyOTpzZXNzaW9uX2lkPTFfTVg0ME56WTBNRFEzTVg1LU1UWTRNREV4TURVMk1EY3hPSDU1WjFsaFlXbE5NME0wWTFOcE5sWm9SVzFXTnpGSFJ5dC1mbjQmY3JlYXRlX3RpbWU9MTY4MDk3OTE2OSZub25jZT0wLjcyNzY2MjQwODQ2NDE3MyZyb2xlPW1vZGVyYXRvciZleHBpcmVfdGltZT0xNjgzNTcxMTY5JmluaXRpYWxfbGF5b3V0X2NsYXNzX2xpc3Q9';
     this.state = {
       signal: {
         data: '',
