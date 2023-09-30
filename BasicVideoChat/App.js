@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { OTSession, OTPublisher, OTSubscriber } from 'opentok-react-native';
@@ -8,13 +9,43 @@ class App extends Component {
     this.apiKey = '';
     this.sessionId = '';
     this.token = '';
-   }
-   
+    this.publisherEventHandlers = {
+      streamCreated: event => {
+        setTimeout(
+          function () {
+            this.publisher.setVideoTransformers([
+              {
+                name: 'BackgroundBlur',
+                properties: '{"radius":"High"}',
+              },
+            ]);
+          }.bind(this),
+          3000,
+        );
+      },
+    };
+  }
+
   render() {
     return (
-      <View style={{ flex: 1, flexDirection: 'column', paddingHorizontal: 100, paddingVertical: 50 }}>
-        <OTSession apiKey={this.apiKey} sessionId={this.sessionId} token={this.token}>
-          <OTPublisher style={{ width: 200, height: 200 }} />
+      <View
+        style={{
+          flex: 1,
+          flexDirection: 'column',
+          paddingHorizontal: 100,
+          paddingVertical: 50,
+        }}>
+        <OTSession
+          apiKey={this.apiKey}
+          sessionId={this.sessionId}
+          token={this.token}>
+          <OTPublisher
+            style={{ width: 200, height: 200 }}
+            eventHandlers={this.publisherEventHandlers}
+            ref={instance => {
+              this.publisher = instance;
+            }}
+          />
           <OTSubscriber style={{ width: 200, height: 200 }} />
         </OTSession>
       </View>
