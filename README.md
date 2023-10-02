@@ -19,6 +19,8 @@ in a React Native application._
     publish a stream, and subscribe to multiple streams for both iOS and
     Android using the OpenTok React Native API.
 
+    *Note:* The Basic Video Chat sample app in this branch is rewritten in TypeScript.
+
 - [Signaling](https://github.com/opentok/opentok-react-native-samples/tree/master/Signaling):
   - This sample application shows how to connect to an OpenTok session and implement OpenTok Signaling to create a text chat for both iOS and Android using the OpenTok React Native API.
 
