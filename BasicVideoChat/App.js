@@ -12,10 +12,15 @@ class App extends Component {
     this.publisherOptions = {
       publishCaptions: true,
       publishVideo: true,
+      publishAudio: false,
     };
     console.log('app started');
     this.subscriberOptions = {
       subscribeToCaptions: true,
+      // subscribeToAudio: false,
+      subscribeToSelf: true,
+      subscribeToVideo: false,
+      audioVolume: 0,
     };
     this.publisherEventHandlers = {
       streamCreated: event => {
@@ -79,7 +84,7 @@ class App extends Component {
           <OTSubscriber
             style={{width: 200, height: 200}}
             eventHandlers={this.subscriberEventHandlers}
-            properties={{subscribeToCaptions: true}}
+            properties={this.subscriberOptions}
             ref={instance => {
               this.subscriber = instance;
             }}
