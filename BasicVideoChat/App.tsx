@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component, createRef} from 'react';
-import {View} from 'react-native';
+import {View, Button, Text} from 'react-native';
 import type {
   OTPublisherEventHandlers,
   OTSessionEventHandlers,
@@ -15,10 +15,13 @@ const apiKey = '';
 const sessionId = '';
 const token = '';
 
-class App extends Component {
+class App extends Component<object, {encryptionSecret: string}> {
   private session = createRef<OTSession>();
   private publisher = createRef<OTPublisher>();
   private subscriber = createRef<OTSubscriber>();
+  private invalidSecret = '1'; // too short
+  private nonMatchingSecret = 'test' + Math.random().toString();
+  private goodSecret = 'testSecret';
 
   sessionEventHandlers: OTSessionEventHandlers = {
     error: event => {
@@ -40,7 +43,6 @@ class App extends Component {
     apiKey: apiKey,
     sessionId: sessionId,
     token: token,
-    encryptionSecret: 'testSecret',
     eventHandlers: this.sessionEventHandlers,
   };
 
@@ -64,6 +66,11 @@ class App extends Component {
     },
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {encryptionSecret: this.goodSecret};
+  }
+
   render() {
     return (
       <View
@@ -73,7 +80,9 @@ class App extends Component {
           paddingHorizontal: 100,
           paddingVertical: 50,
         }}>
-        <OTSession {...this.sessionProps}>
+        <OTSession
+          {...this.sessionProps}
+          encryptionSecret={this.state.encryptionSecret}>
           <OTPublisher
             style={{width: 200, height: 200}}
             ref={this.publisher}
@@ -86,6 +95,21 @@ class App extends Component {
             style={{width: 200, height: 200}}
           />
         </OTSession>
+        <Text>{this.state.encryptionSecret}</Text>
+        <Button
+          onPress={() => this.setState({encryptionSecret: this.goodSecret})}
+          title="Set valid secret"
+        />
+        <Button
+          onPress={() => this.setState({encryptionSecret: this.invalidSecret})}
+          title="Set invalid secret"
+        />
+        <Button
+          onPress={() =>
+            this.setState({encryptionSecret: this.nonMatchingSecret})
+          }
+          title="Set non-matching"
+        />
       </View>
     );
   }
