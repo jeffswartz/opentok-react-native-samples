@@ -9,4 +9,4 @@ This version of the sample app has been modified to test end-to-end encryption. 
 
 * **Test web app** -- This is an Express app that creates E2EE session and serves web pages that use them. Set the `OT_ENCRYPTED` environment variable to enable E2EE in the session. See the readme in the Test web app directory.
 
-* ** BasicVideo ** -- This is a modified version of the BasicVideo sample (from the opentok-react-native-samples repo). See the `sessionProps.encryptionSecret` property. And configure the other settings (`sessionId`, etc.) as you would for the original BasicVideo app (see the readme).
+* **BasicVideo** -- This is a modified version of the BasicVideo sample (from the opentok-react-native-samples repo). See the `sessionProps.encryptionSecret` property. And configure the other settings (`sessionId`, etc.) as you would for the original BasicVideo app (see the readme).
