@@ -11,11 +11,9 @@ import {
   StreamCreatedEvent,
 } from 'opentok-react-native';
 
-const apiKey = '472032';
-const sessionId =
-  '2_MX40NzIwMzJ-fjE3MDU1Mzc4NTk1Mjd-Q2RnczNweHJYcGcvVWo0UDltc3ErYWZ1fn5-';
-const token =
-  'T1==cGFydG5lcl9pZD00NzIwMzImc2lnPTMzNzY3OGY3NGNmZmY4NzM5NGRjNzBiZmI1OTIwOGU5NDE4MjhlOTE6c2Vzc2lvbl9pZD0yX01YNDBOekl3TXpKLWZqRTNNRFUxTXpjNE5UazFNamQtUTJSbmN6TndlSEpZY0djdlZXbzBVRGx0YzNFcllXWjFmbjUtJmNyZWF0ZV90aW1lPTE3MDU1Mzc4NjAmbm9uY2U9MC4xODM3MDkxODUyNDA0OTQ0JnJvbGU9bW9kZXJhdG9yJmV4cGlyZV90aW1lPTE3MDgxMjk4NjAmaW5pdGlhbF9sYXlvdXRfY2xhc3NfbGlzdD0=';
+const apiKey = '';
+const sessionId = '';
+const token = '';
 
 class App extends Component<{}, {publisherStreamId: string}> {
   private session = createRef<OTSession>();
