@@ -6,7 +6,6 @@ import type {
   OTSessionEventHandlers,
   OTSubscriberEventHandlers,
   OTSubscriberProperties,
-  StreamCreatedEvent,
 } from 'opentok-react-native';
 import {OTSession, OTPublisher, OTSubscriber} from 'opentok-react-native';
 
@@ -21,10 +20,6 @@ class App extends Component {
   audioNetworkStatsReceived = false;
   videoNetworkStatsReceived = false;
 
-  state = {
-    publisherStreamId: '',
-  };
-
   sessionEventHandlers: OTSessionEventHandlers = {
     error: event => {
       console.log(333, event);
@@ -32,76 +27,17 @@ class App extends Component {
     otrnError: event => {
       console.log(666, event);
     },
-    sessionConnected: async event => {
-      console.log(
-        'session connected -- connection ID:',
-        event.connection.connectionId,
-      );
-      this.session.current?.getCapabilities().then(capabilities => {
-        console.log('session capabilities:', capabilities);
-      });
-    },
-    signal: async event => {
-      console.log('signal received', event);
-      // The SignalEvent.connectionId type was missing in 2.26:
-      console.log('signal from connection', event.connectionId);
-    },
   };
 
-  subscriberProperties: OTSubscriberProperties = {
-    subscribeToAudio: true,
-    // These types were missing in 2.26:
-    audioVolume: 1,
-    preferredFrameRate: 1,
-    preferredResolution: '352x288',
-  };
+  subscriberProperties: OTSubscriberProperties = {};
 
   publisherEventHandlers: OTPublisherEventHandlers = {
-    streamCreated: async (event: StreamCreatedEvent) => {
-      console.log('publisher streamCreated', event.streamId);
-      setTimeout(
-        () => this.setState({publisherStreamId: event.streamId}),
-        2000,
-      );
-      if (this.session.current) {
-        this.session.current.forceMuteAll([event.streamId]);
-      }
-
-      if (this.publisher.current) {
-        const blurFilter = {
-          name: 'BackgroundBlur',
-          properties: JSON.stringify({
-            radius: 'High',
-          }),
-        };
-        const backgroundReplacement = {
-          name: 'BackgroundImageReplacement',
-          properties: JSON.stringify({
-            image_file_path: '/details/background.jpg',
-          }),
-        };
-        console.log('filters', blurFilter, backgroundReplacement);
-        this.publisher.current.setVideoTransformers([blurFilter]);
-        this.publisher.current.getRtcStatsReport();
-      }
-    },
-    audioNetworkStats: async event => {
-      if (this.audioNetworkStatsReceived) {
-        return;
-      }
-      this.audioNetworkStatsReceived = true;
-      console.log('publisher audioNetworkStats', event);
-    },
-    videoNetworkStats: async event => {
-      if (this.videoNetworkStatsReceived) {
-        return;
-      }
-      this.videoNetworkStatsReceived = true;
-      console.log('publisher videoNetworkStats', event);
-    },
-    // This was missing in the 2.26 type defiinitions:
-    rtcStatsReport: async () => {
-      // console.log('publisher rtcStatsReport', event);
+    // This was reported as broken in the 2.27.0 type defiinitions.
+    // Although the following line resulted in no linting errors,
+    // The OTSession, OTPublisher, and OTSubscriber components below
+    // resulted in JSX linting errors.
+    videoDisabled: event => {
+      console.log('publisher videoDisabled', event.reason);
     },
   };
 
@@ -110,6 +46,9 @@ class App extends Component {
       console.log('subscriber connected');
       setInterval(() => this.subscriber.current?.getRtcStatsReport(), 2000);
     },
+    videoDisabled: event => console.log(event.stream, event.reason),
+    videoDisableWarning: event => console.log(event.stream),
+    videoDisableWarningLifted: event => console.log(event),
   };
 
   render() {
