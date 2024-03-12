@@ -13,9 +13,9 @@ import {boolean} from 'yargs';
 
 const apiKey = 'c696b10d-a8ea-4eae-9cbd-9017c3e05e71';
 const sessionId =
-  '2_MX5jNjk2YjEwZC1hOGVhLTRlYWUtOWNiZC05MDE3YzNlMDVlNzF-fjE3MTAxODk2Mzg2OTN-cmFxWlpaNXN0MlZsRk41MFFhQVg2SGhUfn5-';
+  '2_MX5jNjk2YjEwZC1hOGVhLTRlYWUtOWNiZC05MDE3YzNlMDVlNzF-fjE3MTAyNzExMDE5NDh-K1lFbWlCTHBBTi92Z05hckhKY3BSaFFofn5-';
 const token =
-  'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6InNlc3Npb24uY29ubmVjdCIsInNlc3Npb25faWQiOiIyX01YNWpOamsyWWpFd1pDMWhPR1ZoTFRSbFlXVXRPV05pWkMwNU1ERTNZek5sTURWbE56Ri1makUzTVRBeE9EazJNemcyT1ROLWNtRnhXbHBhTlhOME1sWnNSazQxTUZGaFFWZzJTR2hVZm41LSIsInJvbGUiOiJwdWJsaXNoZXIiLCJpbml0aWFsX2xheW91dF9jbGFzc19saXN0IjoiIiwic3ViIjoidmlkZW8iLCJhY2wiOnsicGF0aHMiOnsiL3Nlc3Npb24vKioiOnt9fX0sImV4cCI6MTcxMDI3NjAzOSwianRpIjoiMDdhYjEwNDEtYjkxMy00MDMzLWFkMmMtMTcwOWQzYzBkN2YzIiwiaWF0IjoxNzEwMTg5NjM4LCJhcHBsaWNhdGlvbl9pZCI6ImM2OTZiMTBkLWE4ZWEtNGVhZS05Y2JkLTkwMTdjM2UwNWU3MSJ9.Kf7iIQohqy0Wg3y9mwCrVtsBQGmMP8G2LlGbirH97KfSP5ci8AAwSJg14UkooB6bVhAyHkEUO7IVx_F8qcr7DH1dEmEZHSzzTUVkhPJX85Mc_ztxejWB4ht34UWr-Mjmiu6QJ37leL1yiyVictrGsOxrrrP02rijPDg3eoYXLVhBef6f9pVWONmYzWAGR7BYXPLvFeSjakeC1VnO8l14XKXcYuTnGhgRNi6vMgimTZifmgT6W3Q_LkxqtqjRij661bWnY42HaAYF9ZXWg7QmP8P4Gb3s62yJWDQbse67cvLD1xB4hryqoC0_ZbvKzLtssPv-pkTDr47V_mGdz4icVg';
+  'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6InNlc3Npb24uY29ubmVjdCIsInNlc3Npb25faWQiOiIyX01YNWpOamsyWWpFd1pDMWhPR1ZoTFRSbFlXVXRPV05pWkMwNU1ERTNZek5sTURWbE56Ri1makUzTVRBeU56RXhNREU1TkRoLUsxbEZiV2xDVEhCQlRpOTJaMDVoY2toS1kzQlNhRkZvZm41LSIsInJvbGUiOiJwdWJsaXNoZXIiLCJpbml0aWFsX2xheW91dF9jbGFzc19saXN0IjoiIiwic3ViIjoidmlkZW8iLCJhY2wiOnsicGF0aHMiOnsiL3Nlc3Npb24vKioiOnt9fX0sImV4cCI6MTcxMDM1NzUwMiwianRpIjoiYTBjMWI3NTQtYWRlOS00YzcyLTk3YTEtY2IzYTc1NTY2Zjc1IiwiaWF0IjoxNzEwMjcxMTAyLCJhcHBsaWNhdGlvbl9pZCI6ImM2OTZiMTBkLWE4ZWEtNGVhZS05Y2JkLTkwMTdjM2UwNWU3MSJ9.iMAtbir-Pzo1YJQhD6cKo8dvRePVD4ieDEDTHZhbp2WLQdGyLdr73chcwpjQ83mvpaAUst44TYYWdzfCwE1bYtVq6oP5bgWIGJHkv3ccKCmUvGVuK6RnM3Hj5HfQf8utPEccvvuDdOnMX9qU3uM1WqfOLpvWvR-2cmrhq095k7dynQk1ELuSNNUZUiwlRXsHxsnvtOaAH3BAjFyQqRcVysPPRMmIE-vGi7lWKK5Y5ye69lJbjjvD5daeAP0kE5F5E8A0OJ5ewK5DvSPPCr_1LQswk7sQL7AAVRhjg_lq2yXl_VoqZRtKHDd-r0UTaEd_AFqkWjydNMnYYtRJ0-A_CQ';
 
 class App extends Component<
   {},
@@ -31,7 +31,6 @@ class App extends Component<
       publishCaptions: true,
       subscribeToCaptions: true,
     };
-    console.log(3, sessionId);
   }
 
   sessionEventHandlers: OTSessionEventHandlers = {
@@ -49,7 +48,11 @@ class App extends Component<
   publisherEventHandlers: OTPublisherEventHandlers = {
     streamCreated: async () => {
       setInterval(() => {
-        this.setState({publishCaptions: !this.state.publishCaptions});
+        this.setState({
+          publishCaptions: !this.state.publishCaptions,
+          subscribeToCaptions: true // !this.state.subscribeToCaptions,
+        });
+        console.log(this.state.subscribeToCaptions);
       }, 5000);
     },
   };
@@ -80,7 +83,7 @@ class App extends Component<
           <OTSubscriber
             style={{width: 200, height: 200}}
             properties={{
-              subscribeToCaptions: true,
+              subscribeToCaptions: this.state.subscribeToCaptions,
             }}
             ref={this.subscriber}
             eventHandlers={{
