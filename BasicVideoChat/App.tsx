@@ -11,11 +11,9 @@ import {
 } from 'opentok-react-native';
 import {boolean} from 'yargs';
 
-const apiKey = 'c696b10d-a8ea-4eae-9cbd-9017c3e05e71';
-const sessionId =
-  '2_MX5jNjk2YjEwZC1hOGVhLTRlYWUtOWNiZC05MDE3YzNlMDVlNzF-fjE3MTAyNzExMDE5NDh-K1lFbWlCTHBBTi92Z05hckhKY3BSaFFofn5-';
-const token =
-  'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6InNlc3Npb24uY29ubmVjdCIsInNlc3Npb25faWQiOiIyX01YNWpOamsyWWpFd1pDMWhPR1ZoTFRSbFlXVXRPV05pWkMwNU1ERTNZek5sTURWbE56Ri1makUzTVRBeU56RXhNREU1TkRoLUsxbEZiV2xDVEhCQlRpOTJaMDVoY2toS1kzQlNhRkZvZm41LSIsInJvbGUiOiJwdWJsaXNoZXIiLCJpbml0aWFsX2xheW91dF9jbGFzc19saXN0IjoiIiwic3ViIjoidmlkZW8iLCJhY2wiOnsicGF0aHMiOnsiL3Nlc3Npb24vKioiOnt9fX0sImV4cCI6MTcxMDM1NzUwMiwianRpIjoiYTBjMWI3NTQtYWRlOS00YzcyLTk3YTEtY2IzYTc1NTY2Zjc1IiwiaWF0IjoxNzEwMjcxMTAyLCJhcHBsaWNhdGlvbl9pZCI6ImM2OTZiMTBkLWE4ZWEtNGVhZS05Y2JkLTkwMTdjM2UwNWU3MSJ9.iMAtbir-Pzo1YJQhD6cKo8dvRePVD4ieDEDTHZhbp2WLQdGyLdr73chcwpjQ83mvpaAUst44TYYWdzfCwE1bYtVq6oP5bgWIGJHkv3ccKCmUvGVuK6RnM3Hj5HfQf8utPEccvvuDdOnMX9qU3uM1WqfOLpvWvR-2cmrhq095k7dynQk1ELuSNNUZUiwlRXsHxsnvtOaAH3BAjFyQqRcVysPPRMmIE-vGi7lWKK5Y5ye69lJbjjvD5daeAP0kE5F5E8A0OJ5ewK5DvSPPCr_1LQswk7sQL7AAVRhjg_lq2yXl_VoqZRtKHDd-r0UTaEd_AFqkWjydNMnYYtRJ0-A_CQ';
+const apiKey = '';
+const sessionId = '';
+const token = '';
 
 class App extends Component<
   {},
@@ -50,7 +48,7 @@ class App extends Component<
       setInterval(() => {
         this.setState({
           publishCaptions: !this.state.publishCaptions,
-          subscribeToCaptions: true // !this.state.subscribeToCaptions,
+          subscribeToCaptions: !this.state.subscribeToCaptions,
         });
         console.log(this.state.subscribeToCaptions);
       }, 5000);
