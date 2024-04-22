@@ -1,73 +1,35 @@
 # OpenTok React Native Samples
 
-<img src="https://assets.tokbox.com/img/vonage/Vonage_VideoAPI_black.svg" height="48px" alt="Tokbox is now known as Vonage" />
+This branch of the sample repo is for testing the `fix-captions` branch of opentok-react-native. Use the BasicVideoChat sample for testing.
 
-_These samples demonstrate how to use opentok-react-native to do video-calling
-in a React Native application._
+Note that the package.json file for the BasicVideoChat sample loads the `opentok-react-native` package from the `fix-captions` branch of the opentok-react-native (at the opentok fork of the repo).
 
-## Contents
+To test this app:
 
-- [Pre-Requisites](#pre-requisites)
-- [Installation](#installation)
-- [Contributing](#contributing)
+1. In a browser, load the the vg-auth-test app: https://vg-auth-test.herokuapp.com/.
 
-### In this repo, you'll find:
+   The page will redirect to a page that loads a specific OpenTok session using a Vonage application ID. If prompted, grant access to the camera and microphone.
 
-- [Basic Video Chat](https://github.com/opentok/opentok-react-native-samples/tree/master/BasicVideoChat):
+   We use this test app because it supports the live captions API. Live captions is not currently supported in the Playground app.
 
-  - This sample application shows how to connect to an OpenTok session,
-    publish a stream, and subscribe to multiple streams for both iOS and
-    Android using the OpenTok React Native API.
+2. Click the `Enable Captions` button on the web page.
 
-    *Note:* The Basic Video Chat sample app in this branch is rewritten in TypeScript.
+3. Open the developer console in the browser page and copy these values:
 
-- [Signaling](https://github.com/opentok/opentok-react-native-samples/tree/master/Signaling):
-  - This sample application shows how to connect to an OpenTok session and implement OpenTok Signaling to create a text chat for both iOS and Android using the OpenTok React Native API.
+   * `appId` (It should be `'c696b10d-a8ea-4eae-9cbd-9017c3e05e71'`.)
+   * `sessionId`
+   * `token`
 
-## Pre-Requisites
+4. In the terminal, `cd` to the `BasicVideoChat` directory (of this project). Install the Node and Podfile dependencies (un `npm install` and then run `npx pod-install`).
 
-1. Install [node.js](https://nodejs.org/)
+5. In the BasicVideoChat/App.tsx file, set the `apiKey` property to the `appId` string from step 3. And set the `sessionId` and `token` values to the values from step 3.
 
-2. Install Watchman: `brew install watchman`
+6. Test the app in iOS. Open a simulator (or connect a device) and run `npx react-native run-ios`.
 
-3. Install React Native CLI: `npm install -g react-native-cli`
+  You probably want to mute your computer speaker to prevent audio feedback.
 
-4. Install and update [Xcode](https://developer.apple.com/xcode/) (you will need a Mac)
+7. Read some text from a book or something.
 
-- React Native iOS installation [instructions](https://facebook.github.io/react-native/docs/getting-started.html)
+   Note that the captions appear in vg-auth-test web page (overlaid on the subscriber video for the stream published from the iOS client). And note that the caption text from the webpage appears in the terminal for the iOS client. The React Native BasicVideoClient test app turns captions on and off every five seconds.
 
-5. Install and update [Android Studio](https://developer.android.com/studio/index.html)
-
-- React Native Android installation [instructions](https://facebook.github.io/react-native/docs/getting-started.html)
-
-## Setup
-
-1. Clone this repo.
-
-2. In your terminal, change your directory to the sample project you want:
-
-- `cd BasicVideoChat/` or `cd Signaling/`
-
-3. Install the required node modules: `npm install`
-
-### For iOS
-
-- Install the Podfile's dependencies: `cd ios/ && pod install`
-
-## Development and Contributing
-
-Interested in contributing? We :heart: pull requests! See the
-[Contribution](CONTRIBUTING.md) guidelines.
-
-## Getting Help
-
-We love to hear from you so if you have questions, comments or find a bug in the project, let us know! You can either:
-
-- Open an issue on this repository
-- See <https://support.tokbox.com/> for support options
-- Tweet at us! We're [@VonageDev](https://twitter.com/VonageDev) on Twitter
-- Or [join the Vonage Developer Community Slack](https://developer.nexmo.com/community/slack)
-
-## Further Reading
-
-- Check out the Developer Documentation at <https://tokbox.com/developer/>
+8. Repeat for Android. (Open the Android emulator or connect a device, and then run `npx react-native run-android`.)
