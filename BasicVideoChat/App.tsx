@@ -20,13 +20,12 @@ const apiKey = '472032';
 const sessionId =
   '2_MX40NzIwMzJ-fjE3MDU1Mzc4NTk1Mjd-Q2RnczNweHJYcGcvVWo0UDltc3ErYWZ1fn5-';
 const token =
-  'T1==cGFydG5lcl9pZD00NzIwMzImc2lnPTMzNzY3OGY3NGNmZmY4NzM5NGRjNzBiZmI1OTIwOGU5NDE4MjhlOTE6c2Vzc2lvbl9pZD0yX01YNDBOekl3TXpKLWZqRTNNRFUxTXpjNE5UazFNamQtUTJSbmN6TndlSEpZY0djdlZXbzBVRGx0YzNFcllXWjFmbjUtJmNyZWF0ZV90aW1lPTE3MDU1Mzc4NjAmbm9uY2U9MC4xODM3MDkxODUyNDA0OTQ0JnJvbGU9bW9kZXJhdG9yJmV4cGlyZV90aW1lPTE3MDgxMjk4NjAmaW5pdGlhbF9sYXlvdXRfY2xhc3NfbGlzdD0=';
+  'T1==cGFydG5lcl9pZD00NzIwMzImc2lnPTRhY2JjZTkyMTU0ZjA4NWU4NGIxNGUzMTc4MjY5MWJmMDA1YTUzNTc6c2Vzc2lvbl9pZD0yX01YNDBOekl3TXpKLWZqRTNNRFUxTXpjNE5UazFNamQtUTJSbmN6TndlSEpZY0djdlZXbzBVRGx0YzNFcllXWjFmbjUtJmNyZWF0ZV90aW1lPTE3MTM4MDM1OTMmbm9uY2U9MC45NDIyNDI3ODY4MjEyODQyJnJvbGU9bW9kZXJhdG9yJmV4cGlyZV90aW1lPTE3MTYzOTU1OTMmaW5pdGlhbF9sYXlvdXRfY2xhc3NfbGlzdD0=';
 
 class App extends Component {
   private session = createRef<OTSession>();
   private publisher = createRef<OTPublisher>();
   private subscriber = createRef<OTSubscriber>();
-  hideSelfSubscriber = false;
 
   state = {
     publisherStreamId: '',
@@ -68,7 +67,7 @@ class App extends Component {
 
   selfSubscriberProperties: OTSubscriberProperties = {
     subscribeToAudio: false,
-    subscribeToVideo: false,
+    subscribeToVideo: true,
   };
 
   publisherEventHandlers: OTPublisherEventHandlers = {
@@ -76,10 +75,6 @@ class App extends Component {
       console.log('publisher streamCreated', event.streamId);
       this.streamProperties[event.streamId] = this.selfSubscriberProperties;
       this.setState({publisherStreamId: event.streamId});
-      setTimeout(() => {
-        console.log('10 seconds');
-        // this.setState({publish: false});
-      }, 10000);
     },
     streamDestroyed: async (event: StreamDestroyedEvent) => {
       console.log('publisher streamDestroyed', event.streamId);
@@ -87,6 +82,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(`session ID: ${sessionId}`);
     return (
       <View
         style={{
@@ -103,10 +99,13 @@ class App extends Component {
           eventHandlers={this.sessionEventHandlers}>
           {this.state.publish ? (
             <OTPublisher
-              style={{width: 200, height: 200}}
               ref={this.publisher}
               properties={this.publisherProperties}
               eventHandlers={this.publisherEventHandlers}
+              style={{
+                width: 200,
+                height: 150,
+              }}
             />
           ) : null}
           <OTSubscriber
@@ -128,11 +127,12 @@ class App extends Component {
                     <OTSubscriberView
                       streamId={streamId}
                       key={streamId}
-                      style={
-                        isSelfSubscriber && this.hideSelfSubscriber
-                          ? {}
-                          : {width: 100, height: 100}
-                      }
+                      style={{
+                        width: 200,
+                        height: 150,
+                        borderColor: 'blue',
+                        borderWidth: isSelfSubscriber ? 2 : 0
+                      }}
                     />
                   );
                 });
