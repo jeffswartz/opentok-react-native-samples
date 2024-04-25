@@ -28,10 +28,7 @@ class App extends Component {
         <OTSession
           apiKey={this.apiKey}
           sessionId={this.sessionId}
-          token={this.token}
-          options={{
-            enableStereoOutput: true,
-          }}>
+          token={this.token}>
           <OTPublisher style={{width: 200, height: 200}} />
           <OTSubscriber style={{width: 200, height: 200}} />
         </OTSession>
