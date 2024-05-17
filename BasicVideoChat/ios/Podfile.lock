@@ -1,8 +1,8 @@
 PODS:
   - boost (1.76.0)
-  - client-sdk-video-react-native (2.27.0):
+  - client-sdk-video-react-native (2.27.4):
     - React
-    - VonageClientSDKVideo (= 2.27.0)
+    - VonageClientSDKVideo (= 2.27.3)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.71.8)
   - FBReactNativeSpec (0.71.8):
@@ -353,7 +353,7 @@ PODS:
     - React-jsi (= 0.71.8)
     - React-logger (= 0.71.8)
     - React-perflogger (= 0.71.8)
-  - VonageClientSDKVideo (2.27.0)
+  - VonageClientSDKVideo (2.27.3)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -475,7 +475,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost: 57d2868c099736d80fcd648bf211b4431e51a558
-  client-sdk-video-react-native: c1634e9490d1c33bd31c3d6cdefd00359b0ebf3f
+  client-sdk-video-react-native: b81fe414eaaef1cc541f6c5e64bdbc4665ea771a
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   FBLazyVector: f637f31eacba90d4fdeff3fa41608b8f361c173b
   FBReactNativeSpec: 0d9a4f4de7ab614c49e98c00aedfd3bfbda33d59
@@ -510,7 +510,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: 43ffd976a25f6057a7cf95ea3648ba4e00287f89
   React-runtimeexecutor: 7c51ae9d4b3e9608a2366e39ccaa606aa551b9ed
   ReactCommon: 85c98ab0a509e70bf5ee5d9715cf68dbf495b84c
-  VonageClientSDKVideo: bac74c8354837bb0df728d46bcfc9b3d625804ca
+  VonageClientSDKVideo: d56acb8ea588826a2ccd1318b434b662c6a085a8
   Yoga: 065f0b74dba4832d6e328238de46eb72c5de9556
 
 PODFILE CHECKSUM: 7ffd99f77dd319e39cdd84a3dbb84136c1dd073f
