@@ -10,7 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@vonage/client-sdk-video-react-native": "opentok/opentok-react-native#vonage-2.27.4",
+    "@vonage/client-sdk-video-react-native": "^2.27.4",
     "react": "18.2.0",
     "react-native": "0.71.8"
   },
