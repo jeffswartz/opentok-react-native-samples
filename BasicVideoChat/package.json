@@ -10,7 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "opentok-react-native": "opentok/opentok-react-native#fix-subscribeToSelf",
+    "opentok-react-native": "opentok/opentok-react-native#fix-android-crash-v2.27.5",
     "react": "18.2.0",
     "react-native": "0.71.8"
   },

@@ -18,9 +18,9 @@ import {
 
 const apiKey = '472032';
 const sessionId =
-  '2_MX40NzIwMzJ-fjE3MDU1Mzc4NTk1Mjd-Q2RnczNweHJYcGcvVWo0UDltc3ErYWZ1fn5-';
+  '1_MX40NzIwMzJ-fjE3MTgxMzYwMTA4MjV-RzZzTjVrSXk3ZEo1K0NKWVI3K0N2amh5fn5-';
 const token =
-  'T1==cGFydG5lcl9pZD00NzIwMzImc2lnPTRhY2JjZTkyMTU0ZjA4NWU4NGIxNGUzMTc4MjY5MWJmMDA1YTUzNTc6c2Vzc2lvbl9pZD0yX01YNDBOekl3TXpKLWZqRTNNRFUxTXpjNE5UazFNamQtUTJSbmN6TndlSEpZY0djdlZXbzBVRGx0YzNFcllXWjFmbjUtJmNyZWF0ZV90aW1lPTE3MTM4MDM1OTMmbm9uY2U9MC45NDIyNDI3ODY4MjEyODQyJnJvbGU9bW9kZXJhdG9yJmV4cGlyZV90aW1lPTE3MTYzOTU1OTMmaW5pdGlhbF9sYXlvdXRfY2xhc3NfbGlzdD0=';
+  'T1==cGFydG5lcl9pZD00NzIwMzImc2lnPWI1MGQ3NjUxMDZkNDU5YTgyMzM1MDQxN2JhMDNjNmIzNTg0OTU2NTE6c2Vzc2lvbl9pZD0xX01YNDBOekl3TXpKLWZqRTNNVGd4TXpZd01UQTRNalYtUnpaelRqVnJTWGszWkVvMUswTktXVkkzSzBOMmFtaDVmbjUtJmNyZWF0ZV90aW1lPTE3MTgxMzYwMTEmbm9uY2U9MC4xNTcwODM1MTg4NDMxMjg3NyZyb2xlPW1vZGVyYXRvciZleHBpcmVfdGltZT0xNzIwNzI4MDExJmluaXRpYWxfbGF5b3V0X2NsYXNzX2xpc3Q9';
 
 class App extends Component {
   private session = createRef<OTSession>();
@@ -73,6 +73,7 @@ class App extends Component {
   publisherEventHandlers: OTPublisherEventHandlers = {
     streamCreated: async (event: StreamCreatedEvent) => {
       console.log('publisher streamCreated', event.streamId);
+      console.log(event);
       this.streamProperties[event.streamId] = this.selfSubscriberProperties;
       this.setState({publisherStreamId: event.streamId});
     },
