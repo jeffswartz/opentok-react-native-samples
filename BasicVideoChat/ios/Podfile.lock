@@ -15,10 +15,10 @@ PODS:
     - hermes-engine/Pre-built (= 0.71.8)
   - hermes-engine/Pre-built (0.71.8)
   - libevent (2.1.12)
-  - opentok-react-native (2.27.4):
-    - OTXCFramework (= 2.27.3)
+  - opentok-react-native (2.28.0):
+    - OTXCFramework (= 2.27.4)
     - React
-  - OTXCFramework (2.27.3)
+  - OTXCFramework (2.27.4)
   - RCT-Folly (2021.07.22.00):
     - boost
     - DoubleConversion
@@ -482,8 +482,8 @@ SPEC CHECKSUMS:
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   hermes-engine: 47986d26692ae75ee7a17ab049caee8864f855de
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  opentok-react-native: 170ec0e7198fbfb776e03dcdac9728f7c7b4310f
-  OTXCFramework: 2437708dc97f4778d1d815a9753321d10cd9eaa9
+  opentok-react-native: 81a1ed71fee041a4e21915e8adb5858252a40760
+  OTXCFramework: 8d1dc4e150c6660cd85cdddd243eb87f1313b686
   RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
   RCTRequired: edad2afb54f1621f3515ac77a02f395653e3e05d
   RCTTypeSafety: 2ebaa8a715c275a3ceef4dfe1c5233a0cc536025
@@ -513,6 +513,6 @@ SPEC CHECKSUMS:
   ReactCommon: ae1d021a0416d97e4c7ff9761d684c7eac504b18
   Yoga: 540948b36b46e9469992c4d30ddcc21110b8afe5
 
-PODFILE CHECKSUM: 7ffd99f77dd319e39cdd84a3dbb84136c1dd073f
+PODFILE CHECKSUM: cb8f3adac1ba721c35fefdb37b2f7a4d7c758a33
 
 COCOAPODS: 1.15.2
