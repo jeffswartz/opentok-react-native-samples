@@ -7,8 +7,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.apiKey = '472032';
-    this.sessionId = '1_MX40NzIwMzJ-fjE3MTkyMjU4NjQ2MzJ-VTgvd3ZZUlRNa1licGRPbUZnSnEyeEp2fn5-';
-    this.token = 'T1==cGFydG5lcl9pZD00NzIwMzImc2lnPTBlMDE2Y2NlYTNiMDYzODYwNTY4ZmY4MGI4NzA5YmEyNjM2MWJiNDE6c2Vzc2lvbl9pZD0xX01YNDBOekl3TXpKLWZqRTNNVGt5TWpVNE5qUTJNekotVlRndmQzWlpVbFJOYTFsaWNHUlBiVVpuU25FeWVFcDJmbjUtJmNyZWF0ZV90aW1lPTE3MTkyMjU4NjUmbm9uY2U9MC4yOTg2NjU5NTQ4NTg4NDAyJnJvbGU9bW9kZXJhdG9yJmV4cGlyZV90aW1lPTE3MjE4MTc4NjUmaW5pdGlhbF9sYXlvdXRfY2xhc3NfbGlzdD0=';
+    this.sessionId =
+      '1_MX40NzIwMzJ-fjE3MTkyMjU4NjQ2MzJ-VTgvd3ZZUlRNa1licGRPbUZnSnEyeEp2fn5-';
+    this.token =
+      'T1==cGFydG5lcl9pZD00NzIwMzImc2lnPTBlMDE2Y2NlYTNiMDYzODYwNTY4ZmY4MGI4NzA5YmEyNjM2MWJiNDE6c2Vzc2lvbl9pZD0xX01YNDBOekl3TXpKLWZqRTNNVGt5TWpVNE5qUTJNekotVlRndmQzWlpVbFJOYTFsaWNHUlBiVVpuU25FeWVFcDJmbjUtJmNyZWF0ZV90aW1lPTE3MTkyMjU4NjUmbm9uY2U9MC4yOTg2NjU5NTQ4NTg4NDAyJnJvbGU9bW9kZXJhdG9yJmV4cGlyZV90aW1lPTE3MjE4MTc4NjUmaW5pdGlhbF9sYXlvdXRfY2xhc3NfbGlzdD0=';
   }
 
   render() {
@@ -24,7 +26,24 @@ class App extends Component {
           apiKey={this.apiKey}
           sessionId={this.sessionId}
           token={this.token}>
-          <OTPublisher style={{width: 200, height: 200}} />
+          <OTPublisher
+            style={{width: 200, height: 200}}
+            ref={instance => {
+              this.publisher = instance;
+            }}
+            eventHandlers={{
+              streamCreated: () => {
+                this.publisher.setVideoTransformers([
+                  {
+                    name: 'BackgroundBlur',
+                    properties: JSON.stringify({
+                      radius: 'high',
+                    }),
+                  },
+                ]);
+              },
+            }}
+          />
           <OTSubscriber style={{width: 200, height: 200}} />
         </OTSession>
       </View>
