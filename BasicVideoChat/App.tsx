@@ -54,6 +54,9 @@ class App extends Component {
           sessionId={sessionId}
           token={token}
           ref={this.session}
+          options={{
+            enableSinglePeerConnection: true,
+          }}
           eventHandlers={this.sessionEventHandlers}>
           <OTPublisher
             style={{width: 200, height: 200}}
