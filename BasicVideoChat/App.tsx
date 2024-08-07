@@ -17,21 +17,6 @@ const token = 'T1==cGFydG5lcl9pZD00NzIwMzImc2lnPTNmNzU4MzU3NDU0Yzc2MTIxODkzY2ZlZ
 class App extends Component {
   private session = createRef<OTSession>();
   private publisher = createRef<OTPublisher>();
-  sessionEventHandlers: OTSessionEventHandlers = {
-    sessionConnected: async event => {
-      if (this.session.current) {
-        this.session.current.getCapabilities();
-      }
-      console.log(
-        'session connected -- connection ID:',
-        event.connection.connectionId,
-      );
-      const capabilities = this.session.current?.getCapabilities().then(() => {
-        console.log('session capabilities:', capabilities);
-      });
-    },
-  };
-
   publisherEventHandlers: OTPublisherEventHandlers = {
     streamCreated: async () => {
       this.publisher.current?.setAudioTransformers([
@@ -59,8 +44,7 @@ class App extends Component {
           ref={this.session}
           options={{
             enableSinglePeerConnection: true,
-          }}
-          eventHandlers={this.sessionEventHandlers}>
+          }}>
           <OTPublisher
             style={{width: 200, height: 200}}
             ref={this.publisher}
