@@ -33,10 +33,13 @@ class App extends Component {
   };
 
   publisherEventHandlers: OTPublisherEventHandlers = {
-    streamCreated: async (event: StreamCreatedEvent) => {
-      if (this.session.current) {
-        this.session.current.forceMuteAll([event.streamId]);
-      }
+    streamCreated: async () => {
+      this.publisher.current?.setAudioTransformers([
+        {
+          name: 'NoiseSuppression',
+          properties: '',
+        },
+      ]);
     },
   };
 
