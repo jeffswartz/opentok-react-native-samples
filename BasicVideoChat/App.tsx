@@ -8,11 +8,13 @@ import {
   OTSubscriber,
   OTSessionEventHandlers,
   StreamCreatedEvent,
-} from 'opentok-react-native';
+} from '@vonage/client-sdk-video-react-native';
 
-const apiKey = '';
-const sessionId = '';
-const token = '';
+const applicationId = '472032';
+const sessionId =
+  '2_MX40NzIwMzJ-fjE3MjY1OTU2NjIwMDR-TUMzdk9Dd0hPdXdnMnppdjRyRjcxYStafn5-';
+const token =
+  'T1==cGFydG5lcl9pZD00NzIwMzImc2lnPWI5MTZjODRhMzFkMTA4OTFmM2UwNmJjOTc1Mjk0ZjcxNjQ0NDIzNjA6c2Vzc2lvbl9pZD0yX01YNDBOekl3TXpKLWZqRTNNalkxT1RVMk5qSXdNRFItVFVNemRrOURkMGhQZFhkbk1ucHBkalJ5UmpjeFlTdGFmbjUtJmNyZWF0ZV90aW1lPTE3MjY1OTU2OTAmbm9uY2U9MC42NTY0NTg5ODAyNTM5OTQyJnJvbGU9bW9kZXJhdG9yJmV4cGlyZV90aW1lPTE3MjkxODc2ODk5NjUmaW5pdGlhbF9sYXlvdXRfY2xhc3NfbGlzdD0=';
 
 class App extends Component {
   private session = createRef<OTSession>();
@@ -26,7 +28,7 @@ class App extends Component {
         'session connected -- connection ID:',
         event.connection.connectionId,
       );
-      const capabilities = this.session.current?.getCapabilities().then(() => {
+      this.session.current?.getCapabilities().then(capabilities => {
         console.log('session capabilities:', capabilities);
       });
     },
@@ -50,7 +52,7 @@ class App extends Component {
           paddingVertical: 50,
         }}>
         <OTSession
-          apiKey={apiKey}
+          applicationId={applicationId}
           sessionId={sessionId}
           token={token}
           ref={this.session}
