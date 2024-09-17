@@ -12,7 +12,7 @@
   "dependencies": {
     "@types/react": "18.2.24",
     "@types/react-dom": "18.2.8",
-    "opentok-react-native": "MartinHarkins/opentok-react-native#issue-690-fix-2.25.3-typings",
+    "opentok-react-native": "opentok/opentok-react-native#fix-publilsher-streamDestroyed",
     "react": "18.2.0",
     "react-native": "0.71.8"
   },
