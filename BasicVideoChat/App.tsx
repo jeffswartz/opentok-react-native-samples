@@ -19,29 +19,6 @@ const token =
 class App extends Component {
   private session = createRef<OTSession>();
   private publisher = createRef<OTPublisher>();
-  sessionEventHandlers: OTSessionEventHandlers = {
-    sessionConnected: async event => {
-      if (this.session.current) {
-        this.session.current.getCapabilities();
-      }
-      console.log(
-        'session connected -- connection ID:',
-        event.connection.connectionId,
-      );
-      this.session.current?.getCapabilities().then(capabilities => {
-        console.log('session capabilities:', capabilities);
-      });
-    },
-  };
-
-  publisherEventHandlers: OTPublisherEventHandlers = {
-    streamCreated: async (event: StreamCreatedEvent) => {
-      if (this.session.current) {
-        this.session.current.forceMuteAll([event.streamId]);
-      }
-    },
-  };
-
   render() {
     return (
       <View
@@ -52,16 +29,14 @@ class App extends Component {
           paddingVertical: 50,
         }}>
         <OTSession
+          options={{
+            enableSinglePeerConnection: true,
+          }}
           applicationId={applicationId}
           sessionId={sessionId}
           token={token}
-          ref={this.session}
-          eventHandlers={this.sessionEventHandlers}>
-          <OTPublisher
-            style={{width: 200, height: 200}}
-            ref={this.publisher}
-            eventHandlers={this.publisherEventHandlers}
-          />
+          ref={this.session}>
+          <OTPublisher style={{width: 200, height: 200}} ref={this.publisher} />
           <OTSubscriber style={{width: 200, height: 200}} />
         </OTSession>
       </View>
