@@ -1,6 +1,6 @@
 PODS:
   - boost (1.76.0)
-  - client-sdk-video-react-native (2.28.1):
+  - client-sdk-video-react-native (2.28.2):
     - React
     - VonageClientSDKVideo (= 2.28.0)
   - DoubleConversion (1.1.6)
@@ -475,7 +475,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost: 57d2868c099736d80fcd648bf211b4431e51a558
-  client-sdk-video-react-native: 549e0129a1963fb6b1a3a9cf7c0366c2fb624d38
+  client-sdk-video-react-native: 029b9615a12be25877ad76812e055358e6bad805
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   FBLazyVector: f637f31eacba90d4fdeff3fa41608b8f361c173b
   FBReactNativeSpec: 0d9a4f4de7ab614c49e98c00aedfd3bfbda33d59
