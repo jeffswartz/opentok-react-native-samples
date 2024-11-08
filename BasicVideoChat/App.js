@@ -7,110 +7,39 @@
 
 import React from "react"
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
-  Text,
-  useColorScheme,
   View
 } from "react-native"
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions
-} from "react-native/Libraries/NewAppScreen"
-
-function Section({ children, title }) {
-  const isDarkMode = useColorScheme() === "dark"
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black
-          }
-        ]}
-      >
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark
-          }
-        ]}
-      >
-        {children}
-      </Text>
-    </View>
-  )
-}
+import {OTSession, OTPublisher, OTSubscriber} from 'opentok-react-native';
 
 function App() {
-  const isDarkMode = useColorScheme() === "dark"
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter
-  }
-
+  const apiKey = '472032';
+  const sessionId = '2_MX40NzIwMzJ-fjE3MzExMDA4NzM4MjF-UVF2cHNmVDhvS2JVTWpsWGcxNDRDTlA1fn5-';
+  const token = 'T1==cGFydG5lcl9pZD00NzIwMzImc2lnPTJiMDZmMWI1YmEyZDMxMGMwOWQ0ZmMyNzVjNzE5NDY1MTg5MTNiNjE6c2Vzc2lvbl9pZD0yX01YNDBOekl3TXpKLWZqRTNNekV4TURBNE56TTRNakYtVVZGMmNITm1WRGh2UzJKVlRXcHNXR2N4TkRSRFRsQTFmbjUtJmNyZWF0ZV90aW1lPTE3MzExMDA5NTcmbm9uY2U9MC44NDMxNjg1NTgxOTE1Mjc0JnJvbGU9bW9kZXJhdG9yJmV4cGlyZV90aW1lPTE3MzM2OTI5NTY2MDQmaW5pdGlhbF9sYXlvdXRfY2xhc3NfbGlzdD0=';
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? "light-content" : "dark-content"}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}
-      >
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white
-          }}
-        >
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  )
+    <View
+    style={styles.view}>
+    <OTSession
+      apiKey={apiKey}
+      sessionId={sessionId}
+      token={token}>
+      <OTPublisher style={styles.pubSub}/>
+      <OTSubscriber style={styles.pubSub} />
+    </OTSession>
+  </View>
+)
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24
+  pubSub: {
+    width: 200, height: 200
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: "600"
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: "400"
-  },
-  highlight: {
-    fontWeight: "700"
+  view: {
+    flex: 1,
+    flexDirection: 'column',
+    paddingHorizontal: 100,
+    paddingVertical: 50,
   }
 })
 
