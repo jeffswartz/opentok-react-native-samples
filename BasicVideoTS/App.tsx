@@ -9,9 +9,9 @@ import {
 } from 'opentok-react-native';
 
 function App(): React.JSX.Element {
-  const apiKey = '';
-  const sessionId = '';
-  const token = '';
+  const apiKey = '472032';
+  const sessionId = '1_MX40NzIwMzJ-fjE3MzM0NTAzOTcyNjh-L0FQMkR0K2tVc214ajJOVzZiYWtYclg1fn5-';
+  const token = 'T1==cGFydG5lcl9pZD00NzIwMzImc2lnPTY1OTFlMTFhMTA3NjM5MDYwN2YzMTU2ODgyZjEwMDJjZDQwMjQxNDM6c2Vzc2lvbl9pZD0xX01YNDBOekl3TXpKLWZqRTNNek0wTlRBek9UY3lOamgtTDBGUU1rUjBLMnRWYzIxNGFqSk9WelppWVd0WWNsZzFmbjUtJmNyZWF0ZV90aW1lPTE3NDU4NTkyMDUmbm9uY2U9MC43NzM5NjIwMzkzNjYwMzQ3JnJvbGU9bW9kZXJhdG9yJmV4cGlyZV90aW1lPTE3NDg0NTEyMDQwOTgmaW5pdGlhbF9sYXlvdXRfY2xhc3NfbGlzdD0=';
 
   const [subscribeToVideo, setSubscribeToVideo] = React.useState<boolean>(true);
   const [publishStream, setPublishStream] = React.useState<boolean>(false);
