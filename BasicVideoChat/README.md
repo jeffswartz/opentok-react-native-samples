@@ -22,9 +22,9 @@ In order to work in the latest version of XCode, this app uses react-native vers
 
 4. Overwrite the installed OpenTok native SDK bundles:
 
-  * Open the ~/.gradle/caches/modules-2/files-2.1/com.opentok.android/opentok-android-sdk/2.29.1 directory. Find the subdirectory that contains the `opentok-android-sdk-2.29.1.aar` file and replace it with the `opentok-android-sdk-2.30.0.aar` file from the Nightly build (rename it `opentok-android-sdk-2.29.1.aar` -- change 2.30.0 to 2.29.1). If there is another subdirectory of ~/.gradle/caches/modules-2/files-2.1/com.opentok.android/opentok-android-sdk/2.29.1 that contains a `opentok-android-sdk-2.29.1.pom` file, delete that subdirectory (although I don't know if this is necessary).
+  * Open the ~/.gradle/caches/modules-2/files-2.1/com.opentok.android/opentok-android-sdk/2.29.1 directory. Find the subdirectory that contains the `opentok-android-sdk-2.29.1.aar` file and replace it with the `opentok-android-sdk-2.30.0.aar` file from the nightly build (rename it `opentok-android-sdk-2.29.1.aar` -- change 2.30.0 to 2.29.1). If there is another subdirectory of ~/.gradle/caches/modules-2/files-2.1/com.opentok.android/opentok-android-sdk/2.29.1 that contains a `opentok-android-sdk-2.29.1.pom` file, delete that subdirectory (although I don't know if this is necessary).
 
- * Open the ./ios/Pods/OTXCFramework directory in this BasicVideoChat sample. Replace the OpenTok.xcframework subdirectory with the OpenTok.xcframework directory from the 
+ * Open the ./ios/Pods/OTXCFramework directory in this BasicVideoChat sample. Replace the OpenTok.xcframework subdirectory with the OpenTok.xcframework directory from the nightly build.
 
 5. In the App.js file, set the `apiKey`, `sessionId`, and `token` properties to your Vonage Video API key (project ID), a Vonage Video session ID, and a token for that session.
 
