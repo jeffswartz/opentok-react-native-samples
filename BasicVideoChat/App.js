@@ -23,7 +23,13 @@ class App extends Component {
         <OTSession
           apiKey={this.apiKey}
           sessionId={this.sessionId}
-          token={this.token}>
+          token={this.token}
+          options={{
+            iceConfig:{
+              filterOutLanCandidates: true,
+            },
+          }}
+          >
           <OTPublisher style={{width: 200, height: 200}} />
           <OTSubscriber style={{width: 200, height: 200}} />
         </OTSession>
