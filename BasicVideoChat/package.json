@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@vonage/client-sdk-video-react-native": "^2.30.0",
+    "@vonage/client-sdk-video-react-native": "Vonage/vonage-video-react-native-sdk#version-2.30.1",
     "react": "19.0.0",
     "react-native": "0.79.2"
   },
