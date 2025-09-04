@@ -13,12 +13,16 @@ class App extends Component {
     this.token2 = '';
 
     this.state = {
+      twoSimultaneous: true,
       connected: true,
       sessionId: this.sessionId,
       token: this.token,
     };
 
     this.rotateSession = () => {
+      if (this.state.twoSimultaneous) {
+        return;
+      }
       this.setState({
         connected: false,
       });
@@ -65,6 +69,20 @@ class App extends Component {
           <OTSubscriber style={{width: 200, height: 200}} />
         </OTSession>
         : null }
+        {this.state.twoSimultaneous ? 
+        <OTSession
+          apiKey={this.apiKey}
+          sessionId={this.sessionId2}
+          token={this.token2}
+          eventHandlers={{
+            sessionConnected: (e) => {
+              console.log(e.sessionId);
+            },
+          }}
+        >
+          <OTSubscriber style={{width: 200, height: 200}} />
+        </OTSession>
+        : null}
       </View>
     );
   }
