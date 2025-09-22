@@ -4,11 +4,19 @@ This sample application shows how to connect to an OpenTok session, publish a st
 
 ## Setup
 
-1. Install the required node modules: `npm install`
+1. Install the required node modules: `npm install`.
 
-2. For iOS, install the Podfile's dependencies: `cd ios/ && pod install`
+2. Install the required Gems: `bundle install`.
 
-3. In the App.js file, set the `apiKey`, `sessionId`, and `token` properties to your Vonage Video API key (project ID), a Vonage Video session ID, and a token for that session.
+3. For iOS, install the Podfile's dependencies: `cd ios/ && bundle exec pod install`.
+
+4. In the App.js file, set the `apiKey`, `sessionId`, and `token` properties to your Vonage Video API key (project ID), a Vonage Video session ID, and a token for that session.
+
+Run the app:
+
+- For Android: `npm run android`
+
+- For iOS: `npm run ios`
 
 For testing, you can use the [OpenTok playground](https://tokbox.com/developer/tools/playground/) to create sessions, publish streams from a web client, and subscribe to streams published from the client using the OpenTok React Native SDK.
 
@@ -24,15 +32,12 @@ import {OTSession, OTPublisher, OTSubscriber} from 'opentok-react-native';
 
 Documentation for these components are at <https://github.com/opentok/opentok-react-native/blob/develop/docs/index.md>.
 
-This application shows the simplest way to publish and subscribe to audio-video streams in an OpenTok session. Simply add the  `apiKey`, `sessionId`, and `token` attributes to an `OTSession` component and add `OTPublisher` and `OTSubscriber` components as children of the  `OTSession` component:
+This application shows the simplest way to publish and subscribe to audio-video streams in an OpenTok session. Simply add the `apiKey`, `sessionId`, and `token` attributes to an `OTSession` component. Then add `OTPublisher` and `OTSubscriber` components as children of the `OTSession` component:
 
 ```jsx
-<OTSession
-   apiKey={apiKey}
-   sessionId={sessionId}
-   token={token}>
-   <OTPublisher style={styles.pubSub}/>
-   <OTSubscriber style={styles.pubSub} />
+<OTSession apiKey={this.apiKey} sessionId={this.sessionId} token={this.token}>
+  <OTPublisher style={{width: 200, height: 200}} />
+  <OTSubscriber style={{width: 200, height: 200}} />
 </OTSession>
 ```
 
