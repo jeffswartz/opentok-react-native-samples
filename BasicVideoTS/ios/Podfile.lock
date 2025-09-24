@@ -8,11 +8,11 @@ PODS:
   - hermes-engine (0.78.2):
     - hermes-engine/Pre-built (= 0.78.2)
   - hermes-engine/Pre-built (0.78.2)
-  - OpentokReactNative (2.31.0-beta.0):
+  - OpentokReactNative (2.31.0):
     - DoubleConversion
     - glog
     - hermes-engine
-    - OTXCFramework (= 2.30.1)
+    - OTXCFramework (= 2.31.0)
     - RCT-Folly (= 2024.11.18.00)
     - RCTRequired
     - RCTTypeSafety
@@ -29,9 +29,8 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - VonageClientSDKVideoTransformers (= 2.30.1)
     - Yoga
-  - OTXCFramework (2.30.1)
+  - OTXCFramework (2.31.0)
   - RCT-Folly (2024.11.18.00):
     - boost
     - DoubleConversion
@@ -1550,7 +1549,6 @@ PODS:
     - React-perflogger (= 0.78.2)
     - React-utils (= 0.78.2)
   - SocketRocket (0.7.1)
-  - VonageClientSDKVideoTransformers (2.30.1)
   - Yoga (0.0.0)
 
 DEPENDENCIES:
@@ -1628,7 +1626,6 @@ SPEC REPOS:
   trunk:
     - OTXCFramework
     - SocketRocket
-    - VonageClientSDKVideoTransformers
 
 EXTERNAL SOURCES:
   boost:
@@ -1775,8 +1772,8 @@ SPEC CHECKSUMS:
   fmt: a40bb5bd0294ea969aaaba240a927bd33d878cdd
   glog: eb93e2f488219332457c3c4eafd2738ddc7e80b8
   hermes-engine: 2771b98fb813fdc6f92edd7c9c0035ecabf9fee7
-  OpentokReactNative: f744cc6b588db08d65edc42e3613d881c5ddac7c
-  OTXCFramework: 5424e25ee41b521b4efe3c1d10b0ea8728f929b8
+  OpentokReactNative: 69bfe509539d9a297178f1a7e625505bc2ad88b9
+  OTXCFramework: f84cfeecd04e2dbf674c782af01ca29b785f752a
   RCT-Folly: e78785aa9ba2ed998ea4151e314036f6c49e6d82
   RCTDeprecation: be794de7dc6ed8f9f7fbf525f86e7651b8b68746
   RCTRequired: a83787b092ec554c2eb6019ff3f5b8d125472b3b
@@ -1836,7 +1833,6 @@ SPEC CHECKSUMS:
   ReactCodegen: 99ea3536c05be3c18d0c517acb56b5a6d726fc7b
   ReactCommon: 865ebe76504a95e115b6229dd00a31e56d2d4bfe
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
-  VonageClientSDKVideoTransformers: b98c1b19865035da1a0f2483cb691fc5281aba11
   Yoga: e14bad835e12b6c7e2260fc320bd00e0f4b45add
 
 PODFILE CHECKSUM: 3bd9459dc420ef05f818afb6212ea9a26268312d

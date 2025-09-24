@@ -9,15 +9,15 @@
 
 #import <React/RCTComponentViewFactory.h>
 #import <React/RCTViewComponentView.h>
-#import "OTPublisherViewNativeComponentView.h"
-#import "OTSubscriberViewNativeComponentView.h"
+#import "OTRNPublisherComponentView.h"
+#import "OTRNSubscriberComponentView.h"
 
 @implementation FabricComponentRegistrar
 
 + (void)registerCustomComponents {
     RCTComponentViewFactory *factory = [RCTComponentViewFactory currentComponentViewFactory];
-    [factory registerComponentViewClass:[OTPublisherViewNativeComponentView class]];
-    [factory registerComponentViewClass:[OTSubscriberViewNativeComponentView class]];
+    [factory registerComponentViewClass:[OTRNPublisherComponentView class]];
+    [factory registerComponentViewClass:[OTRNSubscriberComponentView class]];
 }
 
 @end
