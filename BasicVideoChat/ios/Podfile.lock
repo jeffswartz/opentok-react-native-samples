@@ -8,11 +8,11 @@ PODS:
   - hermes-engine (0.79.2):
     - hermes-engine/Pre-built (= 0.79.2)
   - hermes-engine/Pre-built (0.79.2)
-  - OpentokReactNative (2.31.0-beta.1):
+  - OpentokReactNative (2.31.0):
     - DoubleConversion
     - glog
     - hermes-engine
-    - OTXCFramework (= 2.30.1)
+    - OTXCFramework (= 2.31.0)
     - RCT-Folly (= 2024.11.18.00)
     - RCTRequired
     - RCTTypeSafety
@@ -32,9 +32,8 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - VonageClientSDKVideoTransformers (= 2.30.1)
     - Yoga
-  - OTXCFramework (2.30.1)
+  - OTXCFramework (2.31.0)
   - RCT-Folly (2024.11.18.00):
     - boost
     - DoubleConversion
@@ -1682,7 +1681,6 @@ PODS:
     - React-perflogger (= 0.79.2)
     - React-utils (= 0.79.2)
   - SocketRocket (0.7.1)
-  - VonageClientSDKVideoTransformers (2.30.1)
   - Yoga (0.0.0)
 
 DEPENDENCIES:
@@ -1764,7 +1762,6 @@ SPEC REPOS:
   trunk:
     - OTXCFramework
     - SocketRocket
-    - VonageClientSDKVideoTransformers
 
 EXTERNAL SOURCES:
   boost:
@@ -1919,8 +1916,8 @@ SPEC CHECKSUMS:
   fmt: a40bb5bd0294ea969aaaba240a927bd33d878cdd
   glog: 5683914934d5b6e4240e497e0f4a3b42d1854183
   hermes-engine: 314be5250afa5692b57b4dd1705959e1973a8ebe
-  OpentokReactNative: 2b7d302b1e0d14bf4da36d24e5a8ca2953342837
-  OTXCFramework: 5424e25ee41b521b4efe3c1d10b0ea8728f929b8
+  OpentokReactNative: 4967c5d45d4f7eb44058ce0a8ea1e63a5020dbc4
+  OTXCFramework: f84cfeecd04e2dbf674c782af01ca29b785f752a
   RCT-Folly: e78785aa9ba2ed998ea4151e314036f6c49e6d82
   RCTDeprecation: 83ffb90c23ee5cea353bd32008a7bca100908f8c
   RCTRequired: eb7c0aba998009f47a540bec9e9d69a54f68136e
@@ -1984,8 +1981,7 @@ SPEC CHECKSUMS:
   ReactCodegen: c63eda03ba1d94353fb97b031fc84f75a0d125ba
   ReactCommon: 76d2dc87136d0a667678668b86f0fca0c16fdeb0
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
-  VonageClientSDKVideoTransformers: b98c1b19865035da1a0f2483cb691fc5281aba11
-  Yoga: 9f110fc4b7aa538663cba3c14cbb1c335f43c13f
+  Yoga: c758bfb934100bb4bf9cbaccb52557cee35e8bdf
 
 PODFILE CHECKSUM: 53c08e50262775fe2d935263ebe6fb72af8411b7
 
